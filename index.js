@@ -10,8 +10,8 @@ let download = function (uri, filename, callback) {
     });
 };
 
-for (let i = 1; i <= 17; i++) {
-    download(`https://Your_URL_Here_${i}.jpg`, `filesDownloaded/${i}.jpg`, function () {
+for (let i = 1; i <= 36; i++) {
+    download(`https://dmassets.hyundai.com/is/image/hyundaiautoever/HME_NE_N_360_EXT_SFB-Performance+Blue_52910NI000_00${i}?wid=1600&hei=900&fmt=png-alpha&fit=wrap,1`, `EXT_SFB-Performance+Blue/EXT_SFB-Performance+Blue_${i}.jpg`, function () {
         console.log('done');
     });
 }
