@@ -10,8 +10,28 @@ let download = function (uri, filename, callback) {
     });
 };
 
-for (let i = 1; i <= 36; i++) {
-    download(`https://dmassets.hyundai.com/is/image/hyundaiautoever/HME_NE_N_360_EXT_SFB-Performance+Blue_52910NI000_00${i}?wid=1600&hei=900&fmt=png-alpha&fit=wrap,1`, `EXT_SFB-Performance+Blue/EXT_SFB-Performance+Blue_${i}.jpg`, function () {
-        console.log('done');
-    });
-}
+const konaColor = [
+    'PM2',
+    'SAW',
+    'C5G',
+    'PE2',
+    'YYY',
+    'RRR',
+    'R2P',
+    'A2B'
+]
+
+konaColor.forEach(color => {
+    const dir = `Kona_${color}`;
+    if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+    }
+
+    for (let i = 1; i <= 61; i++) {
+        // if (i < 10) 001, 002, 003, 004, 005, 006, 007, 008, 009
+        const newNum = i < 10 ? `00${i}` : `0${i}`;
+        download(`https://www.hyundai.com/contents/vr360/SX11/exterior/${color}/${newNum}.png`, `${dir}/Kona_${color}_${i}.jpg`, function () {
+            console.log('done');
+        });
+    }
+});
